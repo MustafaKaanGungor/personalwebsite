@@ -19,11 +19,20 @@ body {
     gap: 1.5rem;
 }
 
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .wrapper {
     max-width: 650px;
     margin: 0 auto;
     padding-bottom: 2rem;
     padding-top: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .panel {
