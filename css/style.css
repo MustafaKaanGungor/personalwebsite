@@ -1,5 +1,6 @@
 :root {
-    --green:#90945c;
+    /* --green:#90945c; */
+    --green:#20241b;
     --cream:#c2c685;
 }
 
@@ -26,6 +27,21 @@ body {
   pointer-events: none;
 }
 
+#noise-layer {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  filter: url(#grain);
+  opacity: 1;
+  mix-blend-mode: overlay;
+}
+
+#mycelium {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
 .wrapper {
     max-width: 650px;
     margin: 0 auto;
@@ -43,6 +59,7 @@ body {
     background-color: var(--green);
     padding: 0.4rem 0.75rem;
     margin: 0;
+    color: var(--cream);
 }
 
 .panel-body {
