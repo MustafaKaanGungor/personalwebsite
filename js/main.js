@@ -14,13 +14,13 @@ myCtx.strokeStyle = "white";
 
 
 
-const max = 1;
-const min = -1;
+const max = 0.25;
+const min = -0.25;
+const maxBranches = 4;
+const minBranches = 0;
+const lineWidth = 1;
 
-const lengthMax = 200;
-const lengthMin = 100;
-
-recurseMycelium(200, 200, 0, 100, 5);
+recurseMycelium(500, 500, -90, 10, 6);
 
 function recurseMycelium(x, y, direction, length, depth) {
     if(depth <= 0) {
@@ -31,11 +31,14 @@ function recurseMycelium(x, y, direction, length, depth) {
     const newX = x + Math.cos(direction) * length;
     const newY = y + Math.sin(direction) * length;
     myCtx.lineTo(newX, newY);
+    myCtx.lineWidth = lineWidth;
     myCtx.stroke();
     depth = depth - 1;
-    const newDirection = direction + (min + Math.random() * (max - min));
-    const newDirection2 = direction + (min + Math.random() * (max - min));
-    const newLength = length * (0.7 + Math.random() * 0.2);
-    recurseMycelium(newX, newY, newDirection, newLength, depth);
-    recurseMycelium(newX, newY, newDirection2, newLength, depth);
+    const branches = minBranches + Math.random() * (maxBranches - minBranches)
+
+    for(let i = 0; i < branches; i++) { 
+      const newLength = length * (1 + Math.random() * 0.2);
+      const newDirection = direction + (min * depth + Math.random() * ((max * depth) - (min * depth)));
+      recurseMycelium(newX, newY, newDirection, newLength, depth);
+    }
 }
